@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+
 import java.io.FileReader;
 import java.util.Iterator;
 
@@ -13,36 +14,44 @@ import java.util.Iterator;
  */
 
 public class jsonParser {
-    private String nume_oras;
-    private String indicativ_tara;
+    private  String pt;
+   // private String pt;
 
-    public jsonParser(String nume_oras, String indicativ_tara) {
-        this.nume_oras = nume_oras;
-        this.indicativ_tara = indicativ_tara;
+    public jsonParser(String pt) {
+        this.pt = pt;
     }
 
     @SuppressWarnings("unchecked")
-    public static void main(String[] args) {
+    public UIBridge _parse() {
+        UIBridge values=new UIBridge();
         JSONParser parser = new JSONParser();
         try {
-            Object obj = parser.parse(new FileReader("/Users/Shared/crunchify.json"));
+            Object obj = parser.parse(new FileReader(this.pt));
 
-            // A JSON object. Key value pairs are unordered. JSONObject supports java.util.Map interface.
+
             JSONObject jsonObject = (JSONObject) obj;
 
-            // A JSON array. JSONObject supports java.util.List interface.
-            JSONArray companyList = (JSONArray) jsonObject.get("Company List");
 
-            // An iterator over a collection. Iterator takes the place of Enumeration in the Java Collections Framework.
-            // Iterators differ from enumerations in two ways:
-            // 1. Iterators allow the caller to remove elements from the underlying collection during the iteration with well-defined semantics.
-            // 2. Method names have been improved.
-            Iterator<JSONObject> iterator = companyList.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
-            }
+            JSONArray _weather= (JSONArray) jsonObject.get("weather");
+            JSONObject _weather2= (JSONObject) _weather.get(0);
+
+           values.weather= (String) _weather2.get("main");//vremea de baza
+           values.weather_descr= (String) _weather2.get("description");//descrierea
+           values.imgCode= (String) _weather2.get("icon");//vom folosi pentru imagini (tot de pe site-ul lor)
+            //  http://openweathermap.org/img/wn/imgCode@FACTORMARIREx.png
+
+           JSONObject _main= (JSONObject) jsonObject.get("main");
+           values.temp= (Double) _main.get("temp");
+           values.humidity= (Long) _main.get("humidity");
+
+            JSONObject _wind= (JSONObject) jsonObject.get("wind");
+            values.wind_speed= (Double) _wind.get("speed");
+            return  values;
+
+          //  }
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
     }
 }
