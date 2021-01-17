@@ -1,0 +1,76 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+
+
+class Controller implements Initializable{
+@FXML  private ComboBox country
+   @FXML private ComboBox cty;
+   @FXML private Text umid;
+   @FXML private Text wind;
+   @FXML private ImageView img;
+   @FXML private Text gr;
+   @FXML private Text vreme;
+   @FXML private Text dtt;
+   @FXML private ComboBox hist;
+   @FXML protected void setCity()
+   @FXML protected void setCountry()
+   @FXML protected void mainAction()
+   @FXML protected void triggerHistory()
+    public void initialize(URL url, ResourceBundle resourceBundle)
+}
+class downloader{
+  private String nume_oras;
+  private String indicativ_tara;
+   public String _do()
+}
+
+class historyCreater{
+ArrayList<String> a;
+public  void initArray()
+
+}
+
+ class inFile {
+    public String nume;
+    public  String cod;
+}
+class InFileReader{
+private List<inFile> records;
+private List<String> countryList;
+private void readFile()
+public void makeCountryList()
+public void init()
+}
+class jsonParser{
+ private  String pt;
+  private  UIBridge values;
+  public UIBridge _parse()
+   }
+
+
+   class UIBridge {
+       public String weather;
+       public String weather_descr;
+       public Double temp;
+       public Long humidity;
+       public Double wind_speed;
+       public Long wind_speed2;
+       public String imgCode;
+
+
+   }
+
+   jsonParser *-- UIBridge :contains
+   InFileReader *-- inFile :contains
+   Controller *-- historyCreater: contains
+   Controller *-- downloader: contains
+   Controller *-- InFileReader: contains
+   Controller *-- jsonParser: contains
+   Controller *-- UIBridge: contains
+
+
+
+
+@enduml
