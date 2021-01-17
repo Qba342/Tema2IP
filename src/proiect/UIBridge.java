@@ -10,5 +10,8 @@ public class UIBridge {
     public Double temp;
     public Long humidity;
     public Double wind_speed;
+    public Long wind_speed2;
     public String imgCode;
+
+
 }

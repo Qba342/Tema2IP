@@ -8,13 +8,11 @@ import org.json.simple.parser.JSONParser;
 import java.io.FileReader;
 import java.util.Iterator;
 
-/**
- * @author Crunchify.com
- * How to Read JSON Object From File in Java?
- */
+
 
 public class jsonParser {
     private  String pt;
+    private  UIBridge values;
    // private String pt;
 
     public jsonParser(String pt) {
@@ -23,7 +21,7 @@ public class jsonParser {
 
     @SuppressWarnings("unchecked")
     public UIBridge _parse() {
-        UIBridge values=new UIBridge();
+         values=new UIBridge();
         JSONParser parser = new JSONParser();
         try {
             Object obj = parser.parse(new FileReader(this.pt));
@@ -41,17 +39,21 @@ public class jsonParser {
             //  http://openweathermap.org/img/wn/imgCode@FACTORMARIREx.png
 
            JSONObject _main= (JSONObject) jsonObject.get("main");
-           values.temp= (Double) _main.get("temp");
-           values.humidity= (Long) _main.get("humidity");
+           values.temp= (Double) _main.get("temp");//aici
+           values.humidity= (Long) _main.get("humidity");//aici
 
-            JSONObject _wind= (JSONObject) jsonObject.get("wind");
-            values.wind_speed= (Double) _wind.get("speed");
+            JSONObject _wind= (JSONObject) jsonObject.get("wind");//aici
+            String aux2=_wind.get("speed").getClass().getName();//din cauza diferentelor de la viteza vantului
+            if(aux2.equals("java.lang.Long"))
+            values.wind_speed2= (Long) _wind.get("speed");
+            else if(aux2.equals("java.lang.Double"))
+                values.wind_speed= (Double) _wind.get("speed");
             return  values;
 
           //  }
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return values;
         }
     }
 }

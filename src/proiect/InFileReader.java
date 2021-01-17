@@ -13,7 +13,7 @@ public class InFileReader {
     private List<String> countryList=new ArrayList<String>();
 
 
-    public void readFile() throws FileNotFoundException {
+    private void readFile() throws FileNotFoundException {
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader("inFile.txt"));
@@ -46,11 +46,19 @@ public class InFileReader {
                 countryList.add(a.cod);
             }
         }
-        for(String a:countryList)
-        {
-            System.out.println(a);
-        }
+
 
     }
+    public void init() throws FileNotFoundException {
+        readFile();
+        makeCountryList();
+    }
 
+    public List<inFile> getRecords() {
+        return records;
+    }
+
+    public List<String> getCountryList() {
+        return countryList;
+    }
 }

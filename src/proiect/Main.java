@@ -20,8 +20,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("Aplicatie meteo");
+        primaryStage.setScene(new Scene(root, 500, 400));
         primaryStage.show();
     }
 
@@ -34,9 +34,10 @@ public class Main extends Application {
         String currpath=a._do();
         jsonParser parserr=new jsonParser(currpath);
         parserr._parse();*/
-    InFileReader a=new InFileReader();
+   /* InFileReader a=new InFileReader();
     a.readFile();
-    a.makeCountryList();
+    a.makeCountryList();*/
+
         launch(args);
 
     }
