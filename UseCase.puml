@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+
+
+User -> (Start) :1 (selectia datelor)
+
+
+(Start)-> (app) :2 (aplicatia preia datele)
+
+(app) -> (openweather):3 (interogare folosind API)
+
+(openweather) --> (app) :4 (Raspuns server)
+
+(app) --> User :5 (raspunsul aplicatiei)
+
+
+
+
+
+
+note "User-ul selecteaza orasul si tara de interes." as N2
+(Start) .. N2
+note "Aplicatia interogheaza serverul iar apoi primeste raspuns" as N1
+(app) .. N1
+
+@enduml
