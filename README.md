@@ -1,8 +1,7 @@
-### Aplicatie meteo:
-
--Aceasta este o aplicatie grafica de windows realizata folosind tehnologia fxml din cadrul java
--Pentru crearea diagramelor am folosit plug-in-ul plantUml din cadrul intelij
--Pentru ca programul sa mearga este nevoie de integrarea bibliotecilor precizate mai jos in cadrul proiectului
+# Aplicatie meteo:
+- Aceasta este o aplicatie grafica de windows realizata folosind tehnologia fxml din cadrul java
+- Pentru crearea diagramelor am folosit plug-in-ul plantUml din cadrul intelij
+- Pentru ca programul sa mearga este nevoie de integrarea bibliotecilor precizate mai jos in cadrul proiectului
 
 ### Cerinte de sistem:
 - https://gluonhq.com/download/javafx-15-0-1-sdk-windows/  + dezarhivarea acestora si folosirea caii in cadrul librariilor
